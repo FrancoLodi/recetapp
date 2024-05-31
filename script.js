@@ -6,38 +6,14 @@
 // esconder datos
 
 // 10.000 calls por mes gratis
+// Clave de la API de Edamam
+const apiKey = 'TU_API_KEY';
+// ID de la aplicación de Edamam
+const appId = 'TU_API_ID';
 // URL base de la API de Edamam
 const apiUrl = 'https://api.edamam.com/search';
 
 let recetasCargadas = [];
-
-const axios = require('axios');
-
-// URL de la función Lambda
-const lambdaUrl = 'https://eu-west-3.console.aws.amazon.com/lambda/home?region=eu-west-3#/functions/RecetAppFunction';
-
-// Función para obtener las variables de entorno desde la función Lambda
-const getEnvironmentVariables = async () => {
-    try {
-        // Realiza una solicitud HTTP a la función Lambda
-        const response = await axios.get(lambdaUrl);
-
-        // Extrae las variables de entorno de la respuesta
-        const { apiKey, appId } = response.data;
-
-        // Almacena las variables de entorno en tus variables locales
-        const app_id = appId;
-        const app_key = apiKey;
-
-        console.log('Variables de entorno obtenidas con éxito:', app_id, app_key);
-    } catch (error) {
-        console.error('Error al obtener las variables de entorno:', error.message);
-    }
-};
-
-// Llama a la función para obtener y almacenar las variables de entorno
-getEnvironmentVariables();
-
 
 // Pantalla Buscar por receta
 const pantallaBuscarPorReceta = () => {
