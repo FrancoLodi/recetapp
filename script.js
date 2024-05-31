@@ -4,7 +4,11 @@
 // if count < 5 o 10 avisar ERROR avisar y otros errores
 // agregar acreditacion
 // esconder datos
+
 // 10.000 calls por mes gratis
+// URL base de la API de Edamam
+// url AWS
+const apiUrl = 'https://4td5d7t8sl.execute-api.eu-west-3.amazonaws.com/dev';
 
 let recetasCargadas = [];
 
@@ -43,7 +47,7 @@ const pantallaBuscarPorReceta = () => {
 
 // Función para buscar recetas
 const buscarReceta = async (nombreReceta) => {
-    const url = `${apiUrl}?q=${encodeURIComponent(nombreReceta)}&app_id=${appId}&app_key=${apiKey}&from=0&to=30`;
+    const url = `${apiUrl}?q=${encodeURIComponent(nombreReceta)}`;
     try {
         const response = await fetch(url);
         if (!response.ok) throw new Error('No se pudo obtener la lista de recetas');
@@ -130,16 +134,13 @@ const pantallaRecetaRandom = () => {
     botonShuffleAgain.addEventListener("click", buscarRecetaRandom)
 };
 
-// Función para buscar receta random - generando una letra aleatoria
+// Función para buscar receta aleatoria
 const buscarRecetaRandom = async () => {
-    // Generar un número aleatorio entre 0 y 25 (inclusive)
-    const randomIndex = Math.floor(Math.random() * 26);
-    console.log(randomIndex);
-    // Convertir el número en una letra del alfabeto (a: 0, b: 1, ..., z: 25)
-    const randomLetter = String.fromCharCode(97 + randomIndex);
-    console.log(randomLetter);
+    // Generar una letra aleatoria del alfabeto
+    const randomLetter = String.fromCharCode(97 + Math.floor(Math.random() * 26));
+
     // Construir la URL de la solicitud GET con la letra como parámetro de consulta
-    const url = `${apiUrl}?q=${randomLetter}&app_id=${appId}&app_key=${apiKey}&from=0&to=30&random=true`;
+    const url = `${apiUrl}?random=${randomLetter}`;
 
     try {
         const response = await fetch(url);
