@@ -134,14 +134,11 @@ const pantallaRecetaRandom = () => {
     botonShuffleAgain.addEventListener("click", buscarRecetaRandom)
 };
 
-// Función para buscar receta aleatoria
+// Función para buscar receta random - generando una letra aleatoria
 const buscarRecetaRandom = async () => {
-    // Generar una letra aleatoria del alfabeto
-    const randomLetter = String.fromCharCode(97 + Math.floor(Math.random() * 26));
-
-    // Construir la URL de la solicitud GET con la letra como parámetro de consulta
+    const randomIndex = Math.floor(Math.random() * 26);
+    const randomLetter = String.fromCharCode(97 + randomIndex);
     const url = `${apiUrl}?random=${randomLetter}`;
-
     try {
         const response = await fetch(url);
         if (!response.ok) throw new Error('No se pudo obtener la lista de recetas');
