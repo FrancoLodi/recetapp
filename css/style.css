@@ -1,0 +1,293 @@
+@charset "UTF-8";
+/*RESET*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  background-color: #F2681A;
+}
+body .background-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 90%;
+  height: auto;
+  opacity: 50%;
+}
+body header .titulo-header {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200px;
+  margin-bottom: 60px;
+  transition: all 0.5s ease;
+}
+body header .titulo-header .logo-app {
+  width: 190px;
+  height: 190px;
+}
+body header .titulo-header .titulo-recetapp {
+  text-align: center;
+  color: white;
+  font-family: "Roboto";
+  font-size: 64px;
+  font-weight: 700;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 20px;
+}
+body header .titulo-header.cambio-header {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14px;
+  margin-bottom: 30px;
+  gap: 12px;
+}
+body header .titulo-header.cambio-header .logo-app {
+  width: 78px;
+  height: 78px;
+}
+body header .titulo-header.cambio-header .titulo-recetapp {
+  font-size: 48px;
+}
+body main .menu-principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+body main .menu-principal .boton-menu-principal {
+  width: 240px;
+  padding: 30px 50px;
+  background-color: white;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  color: black;
+  font-family: "Inter";
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+body main .menu-principal .boton-menu-principal:hover {
+  transform: scale(1.05, 1.05);
+  transition: all 0.5s ease;
+}
+body main .menu-principal .boton-menu-principal:active {
+  background-color: #1A8BF2;
+  color: white;
+  transition: all 0.15s ease;
+}
+body main .menu-principal .pantalla-buscar-receta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body main .menu-principal .pantalla-buscar-receta .formulario-label {
+  color: white;
+  font-family: "Inter";
+  font-size: 14px;
+  margin-top: 250px;
+  margin-bottom: 10px;
+  position: relative;
+  right: 12px;
+}
+body main .menu-principal .pantalla-buscar-receta .formulario-label.cambio-label {
+  display: none;
+}
+body main .menu-principal .pantalla-buscar-receta .formulario {
+  display: flex;
+  transition: all 0.5s ease;
+}
+body main .menu-principal .pantalla-buscar-receta .formulario .barra-busqueda {
+  padding: 12px 20px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border: none;
+  color: black;
+  font-family: "Inter";
+}
+body main .menu-principal .pantalla-buscar-receta .formulario .barra-busqueda::placeholder {
+  color: #D9D9D9;
+}
+body main .menu-principal .pantalla-buscar-receta .formulario .search-button {
+  background-color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+body main .menu-principal .pantalla-buscar-receta .formulario .search-button i {
+  color: #F2681A;
+  font-size: 18px; /* Tamaño de la lupa */
+}
+body main .menu-principal .pantalla-buscar-receta .boton-shuffle {
+  background-color: white;
+  color: #F2681A;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 16px;
+  font-family: "Inter";
+  font-weight: bold;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 65px;
+  margin-bottom: 20px;
+}
+body main .menu-principal .pantalla-buscar-receta .listado-recetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  justify-content: center;
+}
+body main .menu-principal .pantalla-buscar-receta .listado-recetas .tarjeta-receta {
+  display: flex;
+  background-color: whitesmoke;
+  border-radius: 8px;
+  margin: 8px;
+  width: 350px;
+}
+body main .menu-principal .pantalla-buscar-receta .listado-recetas .tarjeta-receta .tarjeta-receta-img {
+  margin: 8px;
+  margin-right: 0;
+  width: 150px;
+  height: 180px;
+  border-radius: 8px;
+}
+body main .menu-principal .pantalla-buscar-receta .listado-recetas .tarjeta-receta .tarjeta-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 6px;
+  margin-left: 2px;
+}
+body main .menu-principal .pantalla-buscar-receta .listado-recetas .tarjeta-receta .tarjeta-info .tarjeta-receta-txt {
+  margin-left: 8px;
+}
+body main .menu-principal .pantalla-buscar-receta .listado-recetas .tarjeta-receta .tarjeta-info .tarjeta-receta-txt .tarjeta-titulo-receta {
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+body main .menu-principal .pantalla-buscar-receta .listado-recetas .tarjeta-receta .tarjeta-info .tarjeta-receta-txt .tarjeta-ingredientes-lista {
+  font-family: "Inter";
+  font-size: 12px;
+  color: #52525C;
+  padding-right: 4px;
+  overflow-y: auto;
+  max-height: 140px;
+}
+body main .menu-principal .pantalla-buscar-receta .listado-recetas .tarjeta-receta .tarjeta-info .boton-ver-receta {
+  border: none;
+  font-family: "Inter";
+  font-weight: bold;
+  margin-top: 2px;
+  margin-bottom: 8px;
+  padding: 2px 30px;
+  background-color: #E1E1E1;
+}
+body main .menu-principal .pantalla-buscar-receta .boton-mostrar-mas {
+  background-color: #F62213;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 16px;
+  font-family: "Inter";
+  font-weight: bold;
+  padding: 20px 30px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* Media Query Desktop */
+@media screen and (min-width: 1023px) {
+  body .background-image {
+    width: 40%;
+  }
+  body header .titulo-header {
+    margin-top: 80px;
+  }
+  body header .titulo-header .logo-app {
+    width: 200px;
+    height: 200px;
+  }
+  body header .titulo-header .titulo-recetapp {
+    font-size: 120px;
+    margin-top: 20px;
+  }
+  body main .menu-principal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 60px;
+  }
+  body main .menu-principal .pantalla-buscar-receta .formulario-label {
+    margin-top: 150px;
+    right: 104px;
+  }
+  body main .menu-principal .pantalla-buscar-receta .formulario .barra-busqueda {
+    width: 400px;
+  }
+}
+@media screen and (min-width: 680px) {
+  body main .menu-principal .pantalla-buscar-receta .listado-recetas {
+    gap: 20px;
+  }
+  body main .menu-principal .pantalla-buscar-receta .listado-recetas .tarjeta-receta {
+    flex-direction: column;
+    align-items: center;
+    width: 260px;
+    min-height: 450px;
+    max-height: 600px;
+    overflow: hidden;
+  }
+  body main .menu-principal .pantalla-buscar-receta .listado-recetas .tarjeta-receta .tarjeta-receta-img {
+    width: 240px;
+    height: 200px;
+    margin: 10px;
+    margin-bottom: 4px;
+  }
+  body main .menu-principal .pantalla-buscar-receta .listado-recetas .tarjeta-receta .tarjeta-info {
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+  body main .menu-principal .pantalla-buscar-receta .listado-recetas .tarjeta-receta .tarjeta-info .tarjeta-receta-txt {
+    margin-left: 12px;
+  }
+  body main .menu-principal .pantalla-buscar-receta .listado-recetas .tarjeta-receta .tarjeta-info .tarjeta-receta-txt .tarjeta-titulo-receta {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  body main .menu-principal .pantalla-buscar-receta .listado-recetas .tarjeta-receta .tarjeta-info .tarjeta-receta-txt .tarjeta-ingredientes-lista {
+    font-size: 16px;
+    padding-right: 4px;
+    overflow-y: auto;
+    max-height: 280px;
+  }
+  body main .menu-principal .pantalla-buscar-receta .listado-recetas .tarjeta-receta .tarjeta-info .boton-ver-receta {
+    margin-top: auto;
+    padding: 10px 50px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
