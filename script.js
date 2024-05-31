@@ -7,10 +7,37 @@
 
 // 10.000 calls por mes gratis
 // URL base de la API de Edamam
-// url AWS
-const apiUrl = 'https://4td5d7t8sl.execute-api.eu-west-3.amazonaws.com/dev';
+const apiUrl = 'https://api.edamam.com/search';
 
 let recetasCargadas = [];
+
+const axios = require('axios');
+
+// URL de la función Lambda
+const lambdaUrl = 'https://eu-west-3.console.aws.amazon.com/lambda/home?region=eu-west-3#/functions/RecetAppFunction';
+
+// Función para obtener las variables de entorno desde la función Lambda
+const getEnvironmentVariables = async () => {
+    try {
+        // Realiza una solicitud HTTP a la función Lambda
+        const response = await axios.get(lambdaUrl);
+
+        // Extrae las variables de entorno de la respuesta
+        const { apiKey, appId } = response.data;
+
+        // Almacena las variables de entorno en tus variables locales
+        const app_id = appId;
+        const app_key = apiKey;
+
+        console.log('Variables de entorno obtenidas con éxito:', app_id, app_key);
+    } catch (error) {
+        console.error('Error al obtener las variables de entorno:', error.message);
+    }
+};
+
+// Llama a la función para obtener y almacenar las variables de entorno
+getEnvironmentVariables();
+
 
 // Pantalla Buscar por receta
 const pantallaBuscarPorReceta = () => {
@@ -47,7 +74,7 @@ const pantallaBuscarPorReceta = () => {
 
 // Función para buscar recetas
 const buscarReceta = async (nombreReceta) => {
-    const url = `${apiUrl}?q=${encodeURIComponent(nombreReceta)}`;
+    const url = `${apiUrl}?q=${encodeURIComponent(nombreReceta)}&app_id=${appId}&app_key=${apiKey}&from=0&to=30`;
     try {
         const response = await fetch(url);
         if (!response.ok) throw new Error('No se pudo obtener la lista de recetas');
@@ -136,9 +163,15 @@ const pantallaRecetaRandom = () => {
 
 // Función para buscar receta random - generando una letra aleatoria
 const buscarRecetaRandom = async () => {
+    // Generar un número aleatorio entre 0 y 25 (inclusive)
     const randomIndex = Math.floor(Math.random() * 26);
+    console.log(randomIndex);
+    // Convertir el número en una letra del alfabeto (a: 0, b: 1, ..., z: 25)
     const randomLetter = String.fromCharCode(97 + randomIndex);
-    const url = `${apiUrl}?random=${randomLetter}`;
+    console.log(randomLetter);
+    // Construir la URL de la solicitud GET con la letra como parámetro de consulta
+    const url = `${apiUrl}?q=${randomLetter}&app_id=${appId}&app_key=${apiKey}&from=0&to=30&random=true`;
+
     try {
         const response = await fetch(url);
         if (!response.ok) throw new Error('No se pudo obtener la lista de recetas');
